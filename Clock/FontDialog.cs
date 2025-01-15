@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Clock
 {
@@ -15,6 +16,15 @@ namespace Clock
 		public FontDialog()
 		{
 			InitializeComponent();
+			LoadFonts();
 		}
+		void LoadFonts()
+		{
+			string execution_path = Path.GetDirectoryName(Application.ExecutablePath);
+            Console.WriteLine(execution_path);
+			string fonts_path = $"{execution_path}\\..\\..\\Fonts";
+			Directory.SetCurrentDirectory(fonts_path);
+            Console.WriteLine(Directory.GetCurrentDirectory());
+        }
 	}
 }

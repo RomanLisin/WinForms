@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;  // DllImport
+using System.IO;					   // Directory
 
 namespace Clock
 {
@@ -20,8 +21,12 @@ namespace Clock
 			labelTime.BackColor = Color.AliceBlue;  // чтобы при изменении прозрачности lableTime отображалось лучше
 			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 50);  // чтобы форма запускалась вправом верхнем углу, при этом Properties -> StartPosition -> Manual
 			toolStripMenuItemShowControls.Checked = true;  // Work not correctly
+			toolStripMenuItemShowConsole.Checked = true;
+
 			fontDialog = new FontDialog();
-		}
+            Console.WriteLine(Directory.GetCurrentDirectory());
+
+        }
 		
 		 void SetVisibility(bool visible)
 		{
