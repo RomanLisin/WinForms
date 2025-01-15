@@ -83,7 +83,7 @@
             this.toolStripSeparator4,
             this.toolStripMenuItemExit});
 			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(210, 226);
+			this.contextMenuStrip.Size = new System.Drawing.Size(210, 204);
 			// 
 			// toolStripMenuItemTopmost
 			// 
@@ -132,6 +132,7 @@
 			this.toolStripMenuItemChooseFont.Name = "toolStripMenuItemChooseFont";
 			this.toolStripMenuItemChooseFont.Size = new System.Drawing.Size(209, 22);
 			this.toolStripMenuItemChooseFont.Text = "Choose font";
+			this.toolStripMenuItemChooseFont.Click += new System.EventHandler(this.toolStripMenuItemChooseFont_Click);
 			// 
 			// toolStripMenuItemColors
 			// 
@@ -226,6 +227,7 @@
 			this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
 			this.notifyIcon.Text = "notifyIcon";
 			this.notifyIcon.Visible = true;
+			this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
 			// 
 			// mainForm
 			// 

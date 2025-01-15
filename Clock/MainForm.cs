@@ -12,12 +12,14 @@ namespace Clock
 {
 	public partial class mainForm : Form
 	{
+		FontDialog fontDialog;
 		public mainForm()
 		{
 			InitializeComponent();
 			labelTime.BackColor = Color.AliceBlue;  // чтобы при изменении прозрачности lableTime отображалось лучше
 			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 50);  // чтобы форма запускалась вправом верхнем углу, при этом Properties -> StartPosition -> Manual
 			toolStripMenuItemShowControls.Checked = true;  // Work not correctly
+			fontDialog = new FontDialog();
 		}
 		
 		 void SetVisibility(bool visible)
@@ -99,6 +101,20 @@ namespace Clock
 		{
 			colorDialog.Color = labelTime.ForeColor;
 			if (colorDialog.ShowDialog(this) == DialogResult.OK) labelTime.ForeColor = colorDialog.Color;
+		}
+
+		private void toolStripMenuItemChooseFont_Click(object sender, EventArgs e)
+		{
+			fontDialog.ShowDialog(this);
+		}
+
+		private void notifyIcon_DoubleClick(object sender, EventArgs e)
+		{
+			if(!this.TopMost)
+			{
+				this.TopMost = true;
+				this.TopMost = false;
+			}
 		}
 	}
 }
