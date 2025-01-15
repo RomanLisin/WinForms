@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FontDialog));
 			this.comboBoxFonts = new System.Windows.Forms.ComboBox();
 			this.labelChooseFont = new System.Windows.Forms.Label();
 			this.labelFontSize = new System.Windows.Forms.Label();
@@ -118,6 +119,7 @@
 			this.Controls.Add(this.labelFontSize);
 			this.Controls.Add(this.labelChooseFont);
 			this.Controls.Add(this.comboBoxFonts);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FontDialog";
 			this.Text = "Choose clock font";
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
