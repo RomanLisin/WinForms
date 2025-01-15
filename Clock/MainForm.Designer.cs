@@ -52,6 +52,7 @@
 			this.buttonHideControls = new System.Windows.Forms.Button();
 			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.colorDialog = new System.Windows.Forms.ColorDialog();
+			this.toolStripMenuItemShowConsole = new System.Windows.Forms.ToolStripMenuItem();
 			this.contextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -72,6 +73,7 @@
 			this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemTopmost,
             this.toolStripMenuItemShowControls,
+            this.toolStripMenuItemShowConsole,
             this.toolStripSeparator1,
             this.toolStripMenuItemShowDate,
             this.toolStripMenuItemShowWeekday,
@@ -83,7 +85,7 @@
             this.toolStripSeparator4,
             this.toolStripMenuItemExit});
 			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(210, 204);
+			this.contextMenuStrip.Size = new System.Drawing.Size(210, 248);
 			// 
 			// toolStripMenuItemTopmost
 			// 
@@ -229,11 +231,19 @@
 			this.notifyIcon.Visible = true;
 			this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
 			// 
+			// toolStripMenuItemShowConsole
+			// 
+			this.toolStripMenuItemShowConsole.CheckOnClick = true;
+			this.toolStripMenuItemShowConsole.Name = "toolStripMenuItemShowConsole";
+			this.toolStripMenuItemShowConsole.Size = new System.Drawing.Size(209, 22);
+			this.toolStripMenuItemShowConsole.Text = "Show console";
+			this.toolStripMenuItemShowConsole.CheckedChanged += new System.EventHandler(this.toolStripMenuItemShowConsole_CheckedChanged);
+			// 
 			// mainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(335, 380);
+			this.ClientSize = new System.Drawing.Size(320, 380);
 			this.Controls.Add(this.buttonHideControls);
 			this.Controls.Add(this.checkBoxShowWeekDay);
 			this.Controls.Add(this.checkBoxShowDate);
@@ -272,6 +282,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExit;
 		private System.Windows.Forms.ColorDialog colorDialog;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemShowConsole;
 	}
 }
 

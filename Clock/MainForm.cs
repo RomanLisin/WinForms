@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Clock
 {
@@ -116,5 +117,14 @@ namespace Clock
 				this.TopMost = false;
 			}
 		}
+
+		private void toolStripMenuItemShowConsole_CheckedChanged(object sender, EventArgs e)
+		{
+			bool show = toolStripMenuItemShowConsole.Checked ? AllocConsole() : FreeConsole();
+		}
+		[DllImport("kernel32.dll")]
+		static extern bool AllocConsole();
+		[DllImport("kernel32.dll")]
+		static extern bool FreeConsole();
 	}
 }
