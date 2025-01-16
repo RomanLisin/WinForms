@@ -36,6 +36,7 @@
 			this.labelExample = new System.Windows.Forms.Label();
 			this.buttonOk = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
+			this.buttonApply = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownFontSize)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -85,7 +86,7 @@
             0,
             0});
 			this.numericUpDownFontSize.Name = "numericUpDownFontSize";
-			this.numericUpDownFontSize.Size = new System.Drawing.Size(105, 26);
+			this.numericUpDownFontSize.Size = new System.Drawing.Size(77, 26);
 			this.numericUpDownFontSize.TabIndex = 3;
 			this.numericUpDownFontSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.numericUpDownFontSize.Value = new decimal(new int[] {
@@ -113,6 +114,7 @@
 			this.buttonOk.TabIndex = 5;
 			this.buttonOk.Text = "OK";
 			this.buttonOk.UseVisualStyleBackColor = true;
+			this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
 			// 
 			// buttonCancel
 			// 
@@ -123,11 +125,22 @@
 			this.buttonCancel.Text = "button2";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			// 
+			// buttonApply
+			// 
+			this.buttonApply.Location = new System.Drawing.Point(418, 101);
+			this.buttonApply.Name = "buttonApply";
+			this.buttonApply.Size = new System.Drawing.Size(75, 23);
+			this.buttonApply.TabIndex = 7;
+			this.buttonApply.Text = "Apply";
+			this.buttonApply.UseVisualStyleBackColor = true;
+			this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
+			// 
 			// FontDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(537, 259);
+			this.ClientSize = new System.Drawing.Size(524, 259);
+			this.Controls.Add(this.buttonApply);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOk);
 			this.Controls.Add(this.labelExample);
@@ -135,6 +148,7 @@
 			this.Controls.Add(this.labelFontSize);
 			this.Controls.Add(this.labelChooseFont);
 			this.Controls.Add(this.comboBoxFonts);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FontDialog";
 			this.Text = "Choose clock font";
@@ -153,5 +167,6 @@
 		private System.Windows.Forms.Label labelExample;
 		private System.Windows.Forms.Button buttonOk;
 		private System.Windows.Forms.Button buttonCancel;
+		private System.Windows.Forms.Button buttonApply;
 	}
 }

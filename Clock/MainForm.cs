@@ -111,9 +111,13 @@ namespace Clock
 
 		private void toolStripMenuItemChooseFont_Click(object sender, EventArgs e)
 		{
-			fontDialog.ShowDialog(this);
+			if(fontDialog.ShowDialog(this)==DialogResult.OK)
+			{
+				labelTime.Font = fontDialog.Font;
+			}
 		}
 
+		// для отображения часов по двойному клику в трее
 		private void notifyIcon_DoubleClick(object sender, EventArgs e)
 		{
 			if(!this.TopMost)
@@ -123,6 +127,7 @@ namespace Clock
 			}
 		}
 
+		//
 		private void toolStripMenuItemShowConsole_CheckedChanged(object sender, EventArgs e)
 		{
 			bool show = toolStripMenuItemShowConsole.Checked ? AllocConsole() : FreeConsole();

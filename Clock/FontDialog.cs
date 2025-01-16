@@ -17,6 +17,7 @@ namespace Clock
 	{
 		string execution_path = ""; 
 			string fonts_path = "";
+		public Font Font { get; set; }
 		public FontDialog()
 		{
 			InitializeComponent();
@@ -45,11 +46,26 @@ namespace Clock
 
 		}
 
-		private void comboBoxFonts_SelectedIndexChanged(object sender, EventArgs e)
+		void SetFont()
 		{
 			PrivateFontCollection pfc = new PrivateFontCollection();
 			pfc.AddFontFile($"{fonts_path}\\{comboBoxFonts.SelectedItem}");
 			labelExample.Font = new Font(pfc.Families[0], Convert.ToInt32(numericUpDownFontSize.Value));
+		}
+
+		private void comboBoxFonts_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			SetFont();
+		}
+
+		private void buttonOk_Click(object sender, EventArgs e)
+		{
+			Font = labelExample.Font;
+		}
+
+		private void buttonApply_Click(object sender, EventArgs e)
+		{
+			SetFont();
 		}
 	}
 }
