@@ -34,6 +34,7 @@
 			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.toolStripMenuItemTopmost = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItemShowControls = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItemShowConsole = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripMenuItemShowDate = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItemShowWeekday = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,6 @@
 			this.buttonHideControls = new System.Windows.Forms.Button();
 			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.colorDialog = new System.Windows.Forms.ColorDialog();
-			this.toolStripMenuItemShowConsole = new System.Windows.Forms.ToolStripMenuItem();
 			this.contextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -85,7 +85,7 @@
             this.toolStripSeparator4,
             this.toolStripMenuItemExit});
 			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(210, 248);
+			this.contextMenuStrip.Size = new System.Drawing.Size(210, 226);
 			// 
 			// toolStripMenuItemTopmost
 			// 
@@ -102,6 +102,14 @@
 			this.toolStripMenuItemShowControls.Size = new System.Drawing.Size(209, 22);
 			this.toolStripMenuItemShowControls.Text = "Show controls";
 			this.toolStripMenuItemShowControls.CheckedChanged += new System.EventHandler(this.toolStripMenuItemShowControls_CheckedChanged);
+			// 
+			// toolStripMenuItemShowConsole
+			// 
+			this.toolStripMenuItemShowConsole.CheckOnClick = true;
+			this.toolStripMenuItemShowConsole.Name = "toolStripMenuItemShowConsole";
+			this.toolStripMenuItemShowConsole.Size = new System.Drawing.Size(209, 22);
+			this.toolStripMenuItemShowConsole.Text = "Show console";
+			this.toolStripMenuItemShowConsole.CheckedChanged += new System.EventHandler(this.toolStripMenuItemShowConsole_CheckedChanged);
 			// 
 			// toolStripSeparator1
 			// 
@@ -148,14 +156,14 @@
 			// toolStripMenuItemBackgroundColor
 			// 
 			this.toolStripMenuItemBackgroundColor.Name = "toolStripMenuItemBackgroundColor";
-			this.toolStripMenuItemBackgroundColor.Size = new System.Drawing.Size(180, 22);
+			this.toolStripMenuItemBackgroundColor.Size = new System.Drawing.Size(168, 22);
 			this.toolStripMenuItemBackgroundColor.Text = "Background color";
 			this.toolStripMenuItemBackgroundColor.Click += new System.EventHandler(this.toolStripMenuItemBackgroundColor_Click);
 			// 
 			// toolStripMenuItemForegroundColor
 			// 
 			this.toolStripMenuItemForegroundColor.Name = "toolStripMenuItemForegroundColor";
-			this.toolStripMenuItemForegroundColor.Size = new System.Drawing.Size(180, 22);
+			this.toolStripMenuItemForegroundColor.Size = new System.Drawing.Size(168, 22);
 			this.toolStripMenuItemForegroundColor.Text = "Foreground color";
 			this.toolStripMenuItemForegroundColor.Click += new System.EventHandler(this.toolStripMenuItemForegroundColor_Click);
 			// 
@@ -231,14 +239,6 @@
 			this.notifyIcon.Visible = true;
 			this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
 			// 
-			// toolStripMenuItemShowConsole
-			// 
-			this.toolStripMenuItemShowConsole.CheckOnClick = true;
-			this.toolStripMenuItemShowConsole.Name = "toolStripMenuItemShowConsole";
-			this.toolStripMenuItemShowConsole.Size = new System.Drawing.Size(209, 22);
-			this.toolStripMenuItemShowConsole.Text = "Show console";
-			this.toolStripMenuItemShowConsole.CheckedChanged += new System.EventHandler(this.toolStripMenuItemShowConsole_CheckedChanged);
-			// 
 			// mainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,6 +252,7 @@
 			this.Name = "mainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 			this.Text = "Clock VPD_311";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
 			this.contextMenuStrip.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
