@@ -15,6 +15,7 @@ namespace Clock
 	public partial class mainForm : Form
 	{
 		FontDialog fontDialog;
+		AlarmDialog alarmDialog;
 		public mainForm()
 		{
 			InitializeComponent();
@@ -157,8 +158,13 @@ namespace Clock
 		{
 			if(fontDialog.ShowDialog(this)==DialogResult.OK)
 			{
-				labelTime.Font = fontDialog.Font;
+				labelTime.Font = (Font)fontDialog.Font;
 			}
+		}
+		private void toolStripMenuItemAlarms_Click(object sender, EventArgs e)
+		{
+			alarmDialog = new AlarmDialog();
+			alarmDialog.ShowDialog();
 		}
 
 		// для отображения часов по двойному клику в трее
@@ -171,7 +177,7 @@ namespace Clock
 			}
 		}
 
-		//
+
 		private void toolStripMenuItemShowConsole_CheckedChanged(object sender, EventArgs e)
 		{
 			bool show = toolStripMenuItemShowConsole.Checked ? AllocConsole() : FreeConsole();
@@ -185,6 +191,7 @@ namespace Clock
 		{
 			SaveSettings();
 		}
+
 	}
 	public class DoubleBufferedControl : Label
 	{
