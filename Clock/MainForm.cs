@@ -56,7 +56,7 @@ namespace Clock
 				labelTime.ForeColor = Color.FromArgb(Convert.ToInt32(sr.ReadLine()));
 				sr.Close();
 				fontDialog = new FontDialog(fontname, fontsize);
-				labelTime.Font = fontDialog.Font;
+				labelTime.Font = (Font)fontDialog.Font;
 			}
 			catch (Exception ex)
 			{
@@ -186,4 +186,5 @@ namespace Clock
 			SaveSettings();
 		}
 	}
+
 }

@@ -31,9 +31,9 @@ namespace Clock
 		public FontDialog(string fontname, float fontsize) :this()
 		{
 			numericUpDownFontSize.Value = (decimal)fontsize;
+			FontFilename = fontname;
 			comboBoxFonts.SelectedIndex = comboBoxFonts.Items.IndexOf(fontname);
 			Font = labelExample.Font;
-			FontFilename = fontname;
 		}
 		void LoadFonts()
 		{
@@ -70,7 +70,7 @@ namespace Clock
 
 		private void buttonOk_Click(object sender, EventArgs e)
 		{
-			Font = labelExample.Font;
+			Font = (Font)labelExample.Font;
 			FontFilename = comboBoxFonts.SelectedItem.ToString();
 		}
 
