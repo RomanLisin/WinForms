@@ -30,7 +30,7 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
-			this.labelTime = new System.Windows.Forms.Label();
+			this.labelTime = new DoubleBufferedControl();//new System.Windows.Forms.Label();
 			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.toolStripMenuItemTopmost = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItemShowControls = new System.Windows.Forms.ToolStripMenuItem();
@@ -261,7 +261,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.Label labelTime;
+		private DoubleBufferedControl /*System.Windows.Forms.Label*/ labelTime;
 		private System.Windows.Forms.Timer timer;
 		private System.Windows.Forms.CheckBox checkBoxShowDate;
 		private System.Windows.Forms.CheckBox checkBoxShowWeekDay;

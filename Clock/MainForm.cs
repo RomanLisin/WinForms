@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;  // DllImport
-using System.IO;					   // Directory
+using System.IO;                       // Directory
 
 namespace Clock
 {
@@ -186,5 +186,20 @@ namespace Clock
 			SaveSettings();
 		}
 	}
+	public class DoubleBufferedControl : Label
+	{
+		public DoubleBufferedControl()
+		{
+			EnableDoubleBuffering();
+		}
 
+		public void EnableDoubleBuffering()
+		{
+			this.DoubleBuffered = true;
+			this.SetStyle(ControlStyles.OptimizedDoubleBuffer |
+						  ControlStyles.UserPaint |
+						  ControlStyles.AllPaintingInWmPaint, true);
+			this.UpdateStyles();
+		}
+	}
 }
