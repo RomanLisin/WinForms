@@ -67,6 +67,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeSelectDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeSelectDialog.Designer.cs">
+      <DependentUpon>TimeSelectDialog.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AlarmDialog.resx">
       <DependentUpon>AlarmDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +91,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TimeSelectDialog.resx">
+      <DependentUpon>TimeSelectDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

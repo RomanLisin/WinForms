@@ -13,7 +13,9 @@ namespace Clock
 	public partial class AlarmDialog : Form
 	{
 		private int index = 0;
-		private int currentYOffset = 100;
+		private int currentYOffset = 20;
+		protected TimeSelectDialog timeselectDialog;
+		private Panel containerPanel;
 
 		public AlarmDialog()
 		{
@@ -23,12 +25,33 @@ namespace Clock
 		private void buttonAddAlarm_Click(object sender, EventArgs e)
 		{
 			index++;
-			Font textFont = new Font("Microsoft Sans Serif", 18, FontStyle.Regular);
+			timeselectDialog = new TimeSelectDialog();
 
+			if(timeselectDialog.ShowDialog(this)== DialogResult.OK )
+			{
+				
+				if (containerPanel==null) 
+				{	
+					containerPanel = new Panel
+					{
+						Location = new Point(30, 100),
+						Size = new Size(250, 230),
+						BorderStyle = BorderStyle.FixedSingle,
+						AutoScroll = true
+					};
+					this.Controls.Add(containerPanel);
+				}
+				alarmAdd();
+			}
+
+		}
+		void alarmAdd()
+		{
+			Font textFont = new Font("Microsoft Sans Serif", 18, FontStyle.Regular);
 			Label label = new Label
 			{
 				Text = $"Alarm_{index}",
-				Location = new Point(30, currentYOffset),
+				Location = new Point(30, currentYOffset == 30? 0:currentYOffset),
 				AutoSize = true,
 				Font = textFont
 			};
@@ -39,10 +62,24 @@ namespace Clock
 				AutoSize = true,
 				Font = textFont
 			};
-			this.Controls.Add(label);
-			this.Controls.Add(checkBox);
+			checkBox.CheckedChanged += (s, args) =>
+			{
+				if (checkBox.Checked)
+					MessageBox.Show($"{label.Text} include", "Information");
+				else
+					MessageBox.Show($"{label.Text} include", "Information");
+			};
+
+			containerPanel.Controls.Add(label);
+			containerPanel.Controls.Add(checkBox);
 
 			currentYOffset += 30;
+			
+			if (currentYOffset > containerPanel.Height)
+			{
+				containerPanel.AutoScrollPosition = new Point(0, containerPanel.VerticalScroll.Maximum);
+			}	
+
 		}
 	}
 }

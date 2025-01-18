@@ -28,8 +28,10 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlarmDialog));
 			this.labelAlarms = new System.Windows.Forms.Label();
 			this.buttonAddAlarm = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// labelAlarms
@@ -46,24 +48,37 @@
 			// buttonAddAlarm
 			// 
 			this.buttonAddAlarm.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.buttonAddAlarm.Location = new System.Drawing.Point(262, 31);
+			this.buttonAddAlarm.Location = new System.Drawing.Point(225, 31);
 			this.buttonAddAlarm.Name = "buttonAddAlarm";
 			this.buttonAddAlarm.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.buttonAddAlarm.Size = new System.Drawing.Size(80, 48);
+			this.buttonAddAlarm.Size = new System.Drawing.Size(59, 51);
 			this.buttonAddAlarm.TabIndex = 1;
 			this.buttonAddAlarm.Text = "+";
 			this.buttonAddAlarm.UseVisualStyleBackColor = true;
 			this.buttonAddAlarm.Click += new System.EventHandler(this.buttonAddAlarm_Click);
 			// 
+			// button1
+			// 
+			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.button1.Location = new System.Drawing.Point(310, 31);
+			this.button1.Name = "button1";
+			this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.button1.Size = new System.Drawing.Size(59, 51);
+			this.button1.TabIndex = 2;
+			this.button1.Text = "-";
+			this.button1.UseVisualStyleBackColor = true;
+			// 
 			// AlarmDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(392, 373);
+			this.ClientSize = new System.Drawing.Size(392, 385);
+			this.Controls.Add(this.button1);
 			this.Controls.Add(this.buttonAddAlarm);
 			this.Controls.Add(this.labelAlarms);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "AlarmDialog";
-			this.Text = "AlarmDialog";
+			this.Text = "Set alarms";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -73,5 +88,6 @@
 
 		private System.Windows.Forms.Label labelAlarms;
 		private System.Windows.Forms.Button buttonAddAlarm;
+		private System.Windows.Forms.Button button1;
 	}
 }
