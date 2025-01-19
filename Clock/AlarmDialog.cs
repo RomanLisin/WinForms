@@ -13,7 +13,7 @@ namespace Clock
 	public partial class AlarmDialog : Form
 	{
 		private int index = 0;
-		private int currentYOffset = 20;
+		private int currentYOffset = 0;
 		protected TimeSelectDialog timeselectDialog;
 		private Panel containerPanel;
 
@@ -24,24 +24,26 @@ namespace Clock
 
 		private void buttonAddAlarm_Click(object sender, EventArgs e)
 		{
-			index++;
+			if (index != 9)
+				{index++;
 			timeselectDialog = new TimeSelectDialog();
 
-			if(timeselectDialog.ShowDialog(this)== DialogResult.OK )
-			{
-				
-				if (containerPanel==null) 
-				{	
-					containerPanel = new Panel
+				if (timeselectDialog.ShowDialog(this) == DialogResult.OK)
+				{
+
+					if (containerPanel == null)
 					{
-						Location = new Point(30, 100),
-						Size = new Size(250, 230),
-						BorderStyle = BorderStyle.FixedSingle,
-						AutoScroll = true
-					};
-					this.Controls.Add(containerPanel);
+						containerPanel = new Panel
+						{
+							Location = new Point(30, 100),
+							Size = new Size(250, 230),
+							BorderStyle = BorderStyle.FixedSingle,
+							AutoScroll = true
+						};
+						this.Controls.Add(containerPanel);
+					}
+					alarmAdd();
 				}
-				alarmAdd();
 			}
 
 		}
@@ -73,12 +75,15 @@ namespace Clock
 			containerPanel.Controls.Add(label);
 			containerPanel.Controls.Add(checkBox);
 
-			currentYOffset += 30;
 			
 			if (currentYOffset > containerPanel.Height)
 			{
+				currentYOffset = 0;
 				containerPanel.AutoScrollPosition = new Point(0, containerPanel.VerticalScroll.Maximum);
-			}	
+			}
+			else  currentYOffset += 30;
+		
+
 
 		}
 	}
