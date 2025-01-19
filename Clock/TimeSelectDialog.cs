@@ -12,6 +12,8 @@ namespace Clock
 {
 	public partial class TimeSelectDialog : Form
 	{
+		public decimal hours = 0;
+		public decimal minutes = 0;
 		public TimeSelectDialog()
 		{
 			InitializeComponent();
@@ -21,7 +23,8 @@ namespace Clock
 
 		private void buttonSet_Click(object sender, EventArgs e)
 		{
-			
+			hours = numericUpDownHours.Value;
+			minutes = numericUpDownMinuts.Value;
 		}
 	}
 	

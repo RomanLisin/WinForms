@@ -16,7 +16,7 @@ namespace Clock
 		private int currentYOffset = 0;
 		protected TimeSelectDialog timeselectDialog;
 		private Panel containerPanel;
-
+		
 		public AlarmDialog()
 		{
 			InitializeComponent();
@@ -53,7 +53,7 @@ namespace Clock
 
 			Button addButton = new Button
 			{
-				Text = $"Alarm_{index}",
+				Text = $"{(int)timeselectDialog.hours:D2}:{(int)timeselectDialog.minutes:D2}", //$"Alarm_{index}",
 				Location = new Point(30, currentYOffset),
 				FlatStyle = FlatStyle.Flat,
 				BackColor = Color.Transparent,
