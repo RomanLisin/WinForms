@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;  // DllImport
 using System.IO;                       // Directory
+using System.Media;
+
 
 namespace Clock
 {
@@ -100,6 +102,11 @@ namespace Clock
 			}
 			notifyIcon.Text = $"{DateTime.Now.ToString("hh:mm tt")}\n{DateTime.Now.ToString("yyyy.MM.dd")}\n{DateTime.Now.DayOfWeek}";//DateTime.Now.ToString("hh:mm tt"); //labelTime.Text;  // чтобы при наведении курсора  в system tray в подсказке  отображалось время
 
+			//// Обновление отображения времени
+			//labelTime.Text = DateTime.Now.ToString("HH:mm:ss");
+
+			// Проверка совпадений времени
+			//alarmDialog?.CheckAlarmMatchesCurrentTime(DateTime.Now.ToString("HH:mm"));  //Конструкция с ?. называется null-условный оператор (null-conditional operator). Она используется для предотвращения ошибки, если объект alarmDialog равен null. Если alarmDialog не равен null, метод CheckAlarmMatchesCurrentTime() будет вызван, в противном случае ничего не произойдет.
 		}
 
 		private void buttonHideControls_Click(object sender, EventArgs e)
@@ -191,6 +198,7 @@ namespace Clock
 		{
 			SaveSettings();
 		}
+	
 
 	}
 	public class DoubleBufferedControl : Label
@@ -209,4 +217,28 @@ namespace Clock
 			this.UpdateStyles();
 		}
 	}
+
+	//public class AlarmHandler
+	//{
+	//	public void CheckAndPlay(Button button)
+	//	{
+	//		try
+	//		{
+	//			string currentTime = DateTime.Now.ToString("HH:mm");
+
+	//			if (button.Text == currentTime)
+	//				string filePath = /*Path.Combine(Application.StartupPath, */"Sound\\file_example_WAV_1MG.wav"; //);
+
+	//			using (SoundPlayer player = new SoundPlayer(filePath))
+	//			{
+	//				player.Play();
+	//			}
+	//		}
+	//		catch (Exception ex)
+	//		{
+	//			MessageBox.Show($"Playing error: {ex.Message}","Error");
+	//		}
+
+	//	}
+	//}
 }

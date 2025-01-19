@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -132,5 +133,36 @@ namespace Clock
 
 			}
 		}
+
+		public void CheckAlarmMatchesCurrentTime(string labelText)
+		{
+			//string currentTime = DateTime.Now.ToString("HH:mm");
+
+			foreach (Control control in containerPanel.Controls)
+			{
+				if (control is Button button && button.Text == labelText) // currentTime)
+				{
+					MessageBox.Show($"Будильник {button.Text} сработал!", "Уведомление");
+
+					// Дополнительно: можете воспроизвести звук или выполнить другое действие
+					//PlayAlarmSound();
+				}
+			}
+		}
+		//private void PlayAlarmSound()
+		//{
+		//	try
+		//	{
+		//		string filePath = "Sound\\file_example_WAV_1MG.wav"; // Укажите путь к вашему звуковому файлу
+		//		using (SoundPlayer player = new SoundPlayer(filePath))
+		//		{
+		//			player.Play();
+		//		}
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		MessageBox.Show($"Ошибка воспроизведения звука: {ex.Message}", "Ошибка");
+		//	}
+		//}
 	}
 }
