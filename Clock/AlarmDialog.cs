@@ -37,7 +37,7 @@ namespace Clock
 						{
 							Location = new Point(30, 100),
 							Size = new Size(250, 230),
-							BorderStyle = BorderStyle.FixedSingle,
+							BorderStyle = BorderStyle.None,
 							AutoScroll = true
 						};
 						this.Controls.Add(containerPanel);
@@ -49,33 +49,62 @@ namespace Clock
 		}
 		void alarmAdd()
 		{
-			Font textFont = new Font("Microsoft Sans Serif", 18, FontStyle.Regular);
-			Label label = new Label
+			Font textFont = new Font("Microsoft Sans Serif", 14, FontStyle.Regular);
+
+			Button addButton = new Button
 			{
 				Text = $"Alarm_{index}",
-				Location = new Point(30, currentYOffset == 30? 0:currentYOffset),
-				AutoSize = true,
-				Font = textFont
+				Location = new Point(30, currentYOffset),
+				FlatStyle = FlatStyle.Flat,
+				BackColor = Color.Transparent,
+				Size = new Size(120, 30),
+				Font = textFont // new Font("Microsoft Sans Serif", 12, FontStyle.Regular)
 			};
+			addButton.FlatAppearance.BorderSize = 0; // убирает границу кнопки
+			//Label label = new Label
+			//{
+			//	Text = $"Alarm_{index}",
+			//	Location = new Point(30, currentYOffset == 30? 0:currentYOffset),
+			//	AutoSize = true,
+			//	Font = textFont
+			//};
 			CheckBox checkBox = new CheckBox
 			{
 				Text = "On",
-				Location = new Point(150, currentYOffset),
+				Location = new Point(160, currentYOffset),
 				AutoSize = true,
 				Font = textFont
 			};
 			checkBox.CheckedChanged += (s, args) =>
 			{
 				if (checkBox.Checked)
-					MessageBox.Show($"{label.Text} include", "Information");
+					MessageBox.Show($"{addButton.Text} include", "Information");
 				else
-					MessageBox.Show($"{label.Text} include", "Information");
+					MessageBox.Show($"{addButton.Text} include", "Information");
+			};
+			Button removeButton = new Button
+			{
+				Text = "-",
+				Location = new Point(0, currentYOffset),
+				Size = new Size(30, 30),
+				Font = textFont, //new Font("Microsoft Sans Serif", 12, FontStyle.Regular)
+				Tag = index
 			};
 
-			containerPanel.Controls.Add(label);
-			containerPanel.Controls.Add(checkBox);
+			removeButton.Click += (s, args) =>
+			{
+				containerPanel.Controls.Remove(addButton);
+				containerPanel.Controls.Remove(checkBox);
+				containerPanel.Controls.Remove(removeButton);
 
-			
+				RecalculatePositions();
+			};
+
+
+			containerPanel.Controls.Add(addButton);
+			containerPanel.Controls.Add(checkBox);
+			containerPanel.Controls.Add(removeButton);
+
 			if (currentYOffset > containerPanel.Height)
 			{
 				currentYOffset = 0;
@@ -85,6 +114,23 @@ namespace Clock
 		
 
 
+		}
+		
+		// метод для пересчета позиций элементов после удаления
+		void RecalculatePositions()
+		{
+			currentYOffset = 0;
+
+			foreach (Control control in containerPanel.Controls) //.OfType<Button>().ToList())
+			{
+				// обновляем позиции элементов по порядку
+				control.Location = new Point(control.Location.X, currentYOffset);
+				if (control is Button && control.Text == "-")
+				{
+					currentYOffset += 30; // увеличиваем отступ только после группы
+				}
+
+			}
 		}
 	}
 }
