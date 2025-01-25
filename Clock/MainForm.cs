@@ -16,7 +16,8 @@ namespace Clock
 	public partial class mainForm : Form
 	{
 		FontDialog fontDialog;
-		AlarmsForm alarmForm;
+		public AlarmsForm alarmForm;
+		
 		public mainForm()
 		{
 			InitializeComponent();
@@ -179,6 +180,28 @@ namespace Clock
 		{
 			bool show = toolStripMenuItemShowConsole.Checked ? AllocConsole() : FreeConsole();
 		}
+		// ******************************************************************************************************
+		// ПЕРЕТАСКИВАНИЕ НАЖАТОЙ НА LABEL ЛЕВОЙ КНОПКОЙ МЫШИ 
+		// импорт методов SendMessege и ReleaseCapture из user32.dll
+		[DllImport("user32.dll")]
+		private static extern int SendMessage(IntPtr hWnd, int Msg, int  wParam, int lParam);
+
+		[DllImport("user32.dll")]
+		private static extern bool ReleaseCapture();
+
+		private const int WM_NCLBUTTONDOWN = 0xA1; // message - left button down
+		private const int HTCAPTION = 0x2;        // message - window caption
+		private void labelTime_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Left)
+			{
+				// освобождаем захват мыши и отправляем сообщение окну
+				ReleaseCapture();
+				SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+			}
+		}
+		// ******************************************************************************************************
+
 		[DllImport("kernel32.dll")]
 		static extern bool AllocConsole();
 		[DllImport("kernel32.dll")]
@@ -202,6 +225,7 @@ namespace Clock
 		{
 			alarmForm.ShowDialog();
 		}
+
 	}
 
 }
