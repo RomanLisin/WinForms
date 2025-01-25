@@ -14,9 +14,12 @@ namespace Clock
 		public Week(CheckedListBox checkedListBox)
 		{
 			this.days = 0;
-			for (int i =0;i < checkedListBox.Items.Count;i++)
+			for (int i = 0; i < checkedListBox.Items.Count; i++)
 			{
-				this.days |= (byte)(1<<i); // устанавливаем соответствующий бит
+				if (checkedListBox.GetItemChecked(i))
+				{
+					this.days |= (byte)(1 << i); // устанавливаем соответствующий бит
+				}
 			}
 		}
 	}

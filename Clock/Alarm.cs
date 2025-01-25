@@ -27,19 +27,24 @@ namespace Clock
 			Filename = filename;
 			//Message = message;
 		}
-		public string AlarmToString()
+		public string AlarmToString(AddAlarmDialog dialog)
 		{
 			string[] dateOfweek = {"Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс" };
-			List<string> list = dateOfweek.ToList();
+			List<string> selectedDays = new List<string>();
+
+			//List<string> list = dateOfweek.ToList();
 			for(int i =0;i<dateOfweek.Length;i++)
+			//for (int i =dateOfweek.Length-1; i>=0;i--)
 			{
 				if((Week.days & (1 <<i)) != 0)
 				{
-					list.RemoveAt(i);
+					//list.RemoveAt(i);
+					selectedDays.Add(dateOfweek[i]);
 				}
 			}
-			dateOfweek  = list.ToArray();
-			return  $"{ Date.ToString()} {Time.ToString()}, {dateOfweek}. {Filename}" ;
+			string selectedDateOfWeek = string.Join(", ", selectedDays);
+			//dateOfweek  = list.ToArray();
+			return $"{Date.ToString("yyyy-MM-dd")} {Time.ToString(@"hh\:mm")}, {selectedDateOfWeek} , {Filename}" ;
 		}
 	}
 }

@@ -16,7 +16,7 @@ namespace Clock
 		public AlarmsForm()
 		{
 			InitializeComponent();
-			dialog = new AddAlarmDialog();
+			dialog = new AddAlarmDialog(this);
 		}
 
 		private void buttonAdd_Click(object sender, EventArgs e)
@@ -26,6 +26,7 @@ namespace Clock
 		public void UpdateListBoxAlarm(string text)
 		{
 			listBoxAlarms.Items.Add(text);
+			this.Update();
 		}
 	}
 }

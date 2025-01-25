@@ -19,12 +19,14 @@ namespace Clock
 		string wavPath = "C:\\Users\\rls\\source\\repos\\WindowsDevelopment\\WinForms\\Clock\\Sound";
 		string selectedSound;
 		bool isFirstShowAddAlarmDialog = true;
+		private AlarmsForm alarmsForm;
 
 		SoundPlayer soundPlayer;
-		public AddAlarmDialog()
+		public AddAlarmDialog(AlarmsForm parentForm)
 		{
 			InitializeComponent();
 			dateTimePickerDate.Enabled = false;
+			alarmsForm = parentForm;
 		}
 
 		
@@ -38,12 +40,12 @@ namespace Clock
 		{
 			Alarm alarm = new Alarm(dateTimePickerDate, dateTimePickerTime, checkedListBoxWeekdays,
 				selectedSound);
-			if (sender is AlarmsForm alarmsForm)
+			if (alarmsForm != null)
 			{
-			 alarmsForm.UpdateListBoxAlarm(alarm.AlarmToString());
+			 alarmsForm.UpdateListBoxAlarm(alarm.AlarmToString(this));
 			}
 
-			if (listBoxSound.SelectedItems == null)
+			if (listBoxSound.SelectedIndex == -1)
 			{
 				MessageBox.Show("Please select a sound from the list.");
 				return;
@@ -56,16 +58,20 @@ namespace Clock
 				MessageBox.Show("The selected file does not exists");
 				return;
 			}
+			if(soundPlayer == null)
+			{
+				soundPlayer = new SoundPlayer();
+			}
 			soundPlayer.SoundLocation = filePath;
 
 		}
 
 		private void AddAlarmDialog_Load(object sender, EventArgs e)
 		{
-			if (isFirstShowAddAlarmDialog) 
-			{ 
-			UpdateData(); 
-			 isFirstShowAddAlarmDialog=false;
+			if (isFirstShowAddAlarmDialog)
+			{
+				UpdateData();
+				isFirstShowAddAlarmDialog = false;
 			}
 		}
 		private void UpdateData()
