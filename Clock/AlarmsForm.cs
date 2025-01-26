@@ -35,5 +35,9 @@ namespace Clock
 				);
 			dialog.ShowDialog();
 		}
+		public void UpdateListBoxAlarm(string text)
+		{
+			listBoxAlarms.Items.Add(text);
+		}
 	}
 }
