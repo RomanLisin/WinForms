@@ -17,7 +17,7 @@ namespace Clock
 	{
 		FontDialog fontDialog;
 		public AlarmsForm alarmForm;
-		
+		Alarm nextAlarm;
 		public mainForm()
 		{
 			InitializeComponent();
@@ -85,6 +85,11 @@ namespace Clock
 			sw.WriteLine($"{labelTime.ForeColor.ToArgb()}");
 			sw.Close();
 		}
+		Alarm FindNextAlarm()
+		{
+			nextAlarm = alarmForm.Alarms.Items.Cast<Alarm>().ToArray().Min();
+			return nextAlarm;
+		}
 		private void timer_Tick(object sender, EventArgs e)
 		{
 			// обработчик события - это самая обычная функция, которая неявно вызывается при возникновении определенного события  
@@ -103,6 +108,11 @@ namespace Clock
 			}
 			notifyIcon.Text = $"{DateTime.Now.ToString("hh:mm tt")}\n{DateTime.Now.ToString("yyyy.MM.dd")}\n{DateTime.Now.DayOfWeek}";//DateTime.Now.ToString("hh:mm tt"); //labelTime.Text;  // чтобы при наведении курсора  в system tray в подсказке  отображалось время
 
+			nextAlarm = FindNextAlarm();
+			if(nextAlarm!=null)
+			{
+				Console.WriteLine(nextAlarm);
+			}
 		}
 
 		private void buttonHideControls_Click(object sender, EventArgs e)
