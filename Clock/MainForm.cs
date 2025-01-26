@@ -28,8 +28,8 @@ namespace Clock
 			//fontDialog = new FontDialog();
             Console.WriteLine(Directory.GetCurrentDirectory());
 			LoadSettings();
+			alarmForm = new AlarmsForm(this);
 			if(fontDialog== null) fontDialog = new FontDialog();
-			alarmForm = new AlarmsForm();
         }
 		
 		 void SetVisibility(bool visible)
