@@ -38,7 +38,8 @@
 			this.checkedListBoxWeekdays = new System.Windows.Forms.CheckedListBox();
 			this.listBoxSound = new System.Windows.Forms.ListBox();
 			this.labelMessage = new System.Windows.Forms.Label();
-			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+			this.richTextBoxMessage = new System.Windows.Forms.RichTextBox();
+			this.buttonChooseFile = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// checkBoxUseDate
@@ -78,10 +79,11 @@
 			// labelFilename
 			// 
 			this.labelFilename.AutoSize = true;
-			this.labelFilename.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelFilename.Location = new System.Drawing.Point(13, 152);
+			this.labelFilename.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.labelFilename.Location = new System.Drawing.Point(12, 228);
+			this.labelFilename.MaximumSize = new System.Drawing.Size(360, 0);
 			this.labelFilename.Name = "labelFilename";
-			this.labelFilename.Size = new System.Drawing.Size(87, 20);
+			this.labelFilename.Size = new System.Drawing.Size(75, 16);
 			this.labelFilename.TabIndex = 4;
 			this.labelFilename.Text = "Filename:";
 			// 
@@ -128,35 +130,46 @@
 			// listBoxSound
 			// 
 			this.listBoxSound.FormattingEnabled = true;
-			this.listBoxSound.Location = new System.Drawing.Point(116, 152);
+			this.listBoxSound.Location = new System.Drawing.Point(116, 295);
 			this.listBoxSound.Name = "listBoxSound";
-			this.listBoxSound.Size = new System.Drawing.Size(237, 69);
+			this.listBoxSound.Size = new System.Drawing.Size(237, 30);
 			this.listBoxSound.TabIndex = 7;
 			// 
 			// labelMessage
 			// 
 			this.labelMessage.AutoSize = true;
 			this.labelMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelMessage.Location = new System.Drawing.Point(12, 238);
+			this.labelMessage.Location = new System.Drawing.Point(9, 295);
 			this.labelMessage.Name = "labelMessage";
 			this.labelMessage.Size = new System.Drawing.Size(86, 20);
 			this.labelMessage.TabIndex = 8;
 			this.labelMessage.Text = "Message:";
 			// 
-			// richTextBox1
+			// richTextBoxMessage
 			// 
-			this.richTextBox1.Location = new System.Drawing.Point(116, 238);
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.Size = new System.Drawing.Size(237, 69);
-			this.richTextBox1.TabIndex = 9;
-			this.richTextBox1.Text = "";
+			this.richTextBoxMessage.Location = new System.Drawing.Point(13, 149);
+			this.richTextBoxMessage.Name = "richTextBoxMessage";
+			this.richTextBoxMessage.Size = new System.Drawing.Size(340, 66);
+			this.richTextBoxMessage.TabIndex = 9;
+			this.richTextBoxMessage.Text = "";
+			// 
+			// buttonChooseFile
+			// 
+			this.buttonChooseFile.Location = new System.Drawing.Point(114, 331);
+			this.buttonChooseFile.Name = "buttonChooseFile";
+			this.buttonChooseFile.Size = new System.Drawing.Size(75, 23);
+			this.buttonChooseFile.TabIndex = 11;
+			this.buttonChooseFile.Text = "Обзор";
+			this.buttonChooseFile.UseVisualStyleBackColor = true;
+			this.buttonChooseFile.Click += new System.EventHandler(this.buttonChooseFile_Click);
 			// 
 			// AddAlarmDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(372, 366);
-			this.Controls.Add(this.richTextBox1);
+			this.Controls.Add(this.buttonChooseFile);
+			this.Controls.Add(this.richTextBoxMessage);
 			this.Controls.Add(this.labelMessage);
 			this.Controls.Add(this.listBoxSound);
 			this.Controls.Add(this.checkedListBoxWeekdays);
@@ -188,6 +201,7 @@
 		private System.Windows.Forms.CheckedListBox checkedListBoxWeekdays;
 		private System.Windows.Forms.ListBox listBoxSound;
 		private System.Windows.Forms.Label labelMessage;
-		private System.Windows.Forms.RichTextBox richTextBox1;
+		private System.Windows.Forms.RichTextBox richTextBoxMessage;
+		private System.Windows.Forms.Button buttonChooseFile;
 	}
 }

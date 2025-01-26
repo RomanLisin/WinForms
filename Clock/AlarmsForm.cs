@@ -33,7 +33,11 @@ namespace Clock
 				this.Location.X + (this.Width - dialog.Width) / 2,
 				this.Location.Y + (this.Height - dialog.Height) / 2
 				);
-			dialog.ShowDialog();
+			DialogResult result = dialog.ShowDialog();
+			if(result==DialogResult.OK)
+			{
+				listBoxAlarms.Items.Add(new Alarm(dialog.Alarm));
+			}
 		}
 		public void UpdateListBoxAlarm(string text)
 		{

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Clock
 {
-	internal class Alarm
+	public class Alarm
 	{
 
 		public DateTime Date { get; set; }
@@ -15,31 +15,28 @@ namespace Clock
 		public Week Week { get; set; }
 		public string Filename { get; set; }	
 		public string Message { get; set; }
-		public Alarm(DateTimePicker date, DateTimePicker time, CheckedListBox checkedDays,
-			string filename ) //, string message)
+		public Alarm() 
 		{
-			Date = new DateTime();
-			Time= new TimeSpan();
-			
-			Date = date.Value;
-			Time = time.Value.TimeOfDay;
-			Week = new Week(checkedDays);
-			Filename = filename;
-			//Message = message;
+			this.Week = new Week();
 		}
-		public string AlarmToString()
+		public Alarm(Alarm other)
 		{
-			string[] dateOfweek = {"Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс" };
-			List<string> list = dateOfweek.ToList();
-			for(int i =0;i<dateOfweek.Length;i++)
-			{
-				if((Week.days & (1 <<i)) != 0)
-				{
-					list.RemoveAt(i);
-				}
-			}
-			dateOfweek  = list.ToArray();
-			return  $"{ Date.ToString()} {Time.ToString()}, {dateOfweek}. {Filename}" ;
+			this.Date = other.Date;
+			this.Time = other.Time;
+			this.Week = new Week(other.Week);
+			this.Filename = other.Filename;
+			this.Message = other.Message;
+		}
+		public override string ToString()
+		{
+			string info = "";
+			info += $"{(DateTime.Today + this.Time).ToString("hh:mm:ss tt")}\t{this.Week}\t{this.Filename.Split('\\').Last()}";
+			if (this.Date != DateTime.MinValue) info += this.Date.ToString("yyyy.MM.dd");
+			//info += this.Time;
+			//info += this.Week;
+			//info += this.Filename;
+
+			return info;
 		}
 	}
 }

@@ -16,6 +16,9 @@ namespace Clock
 {
 	public partial class AddAlarmDialog : Form
 	{
+		
+		public Alarm Alarm;
+		OpenFileDialog openFile;
 		string wavPath = "C:\\Users\\rls\\source\\repos\\WindowsDevelopment\\WinForms\\Clock\\Sound";
 		string selectedSound;
 		bool isFirstShowAddAlarmDialog = true;
@@ -26,73 +29,61 @@ namespace Clock
 			InitializeComponent();
 			dateTimePickerDate.Enabled = false;
 			this.StartPosition = FormStartPosition.Manual;
+			Alarm = new Alarm();
+			SetWeekDays();
+			openFile = new OpenFileDialog();
+			labelFilename.Height = 32;
 		}
 
-		
+		void SetWeekDays()
+		{
+			bool[] days = Alarm.Week.ToArray();
+			for(int i=0;i<checkedListBoxWeekdays.Items.Count;i++)
+			{
+				checkedListBoxWeekdays.SetItemChecked(i, days[i]);
+			}
+		}
 		private void checkBoxUseDate_CheckedChanged(object sender, EventArgs e)
 		{
 			 dateTimePickerDate.Enabled = checkBoxUseDate.Checked;
 			checkedListBoxWeekdays.Enabled =!checkBoxUseDate.Checked;
+			
 		}
 
 		private void buttonOk_Click(object sender, EventArgs e)
 		{
-			Alarm alarm = new Alarm(dateTimePickerDate, dateTimePickerTime, checkedListBoxWeekdays,
-				selectedSound);
-			if (sender is AlarmsForm alarmsForm)
-			{
-			 alarmsForm.UpdateListBoxAlarm(alarm.AlarmToString());
-			}
+			this.DialogResult = DialogResult.OK;
+			Alarm.Date = dateTimePickerDate.Enabled ? dateTimePickerDate.Value : DateTime.MinValue;
+			Alarm.Time = dateTimePickerTime.Value.TimeOfDay;
 
-			if (listBoxSound.SelectedItems == null)
+			Alarm.Week = new Week
+				(
+				checkedListBoxWeekdays.Items.Cast<object>().Select((item, index) => checkedListBoxWeekdays.GetItemChecked(index)).ToArray()
+				);
+			if (labelFilename.Text != "Filename" && labelFilename.Text != "")
 			{
-				MessageBox.Show("Please select a sound from the list.");
-				return;
-			}
-			selectedSound = listBoxSound.Text;
-			string filePath = $"{wavPath}\\{selectedSound}.wav";
+				Alarm.Filename = openFile.FileName;
 
-			if(!File.Exists(filePath))
+			}
+			else
 			{
-				MessageBox.Show("The selected file does not exists");
-				return;
+				MessageBox.Show(this, "Выберите звуковой файл", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				this.DialogResult = DialogResult.None;
 			}
-			soundPlayer.SoundLocation = filePath;
-
+			Alarm.Message = richTextBoxMessage.Text;
 		}
 
 		private void AddAlarmDialog_Load(object sender, EventArgs e)
 		{
-			if (isFirstShowAddAlarmDialog) 
-			{ 
-			UpdateData(); 
-			 isFirstShowAddAlarmDialog=false;
-			}
-		}
-		private void UpdateData()
-		{
-			try
-			{
-				if (Directory.Exists(wavPath))
-				{
-					string[] wavFiles = Directory.GetFiles(wavPath, "*.wav");
-					foreach (string wavfile in wavFiles)
-					{
-						string wavName = Path.GetFileNameWithoutExtension(wavfile);
-						listBoxSound.Items.Add(wavName);
-					}
-				}
-				else
-				{
-					MessageBox.Show("The specified directory does not exist.");
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show($"An error occurred: {ex.Message}");
-			}
+			
 		}
 
-	
+		private void buttonChooseFile_Click(object sender, EventArgs e)
+		{
+			if(openFile.ShowDialog()==DialogResult.OK)
+			{
+				labelFilename.Text = $"Filename:\n{openFile.FileName}";
+			}
+		}
 	}
 }
