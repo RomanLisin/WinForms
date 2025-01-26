@@ -109,9 +109,25 @@ namespace Clock
 			notifyIcon.Text = $"{DateTime.Now.ToString("hh:mm tt")}\n{DateTime.Now.ToString("yyyy.MM.dd")}\n{DateTime.Now.DayOfWeek}";//DateTime.Now.ToString("hh:mm tt"); //labelTime.Text;  // чтобы при наведении курсора  в system tray в подсказке  отображалось время
 
 			nextAlarm = FindNextAlarm();
-			if(nextAlarm!=null)
+			if (nextAlarm != null)
 			{
 				Console.WriteLine(nextAlarm);
+			}
+
+			if (
+				nextAlarm != null &&
+				nextAlarm.Time.Hours == DateTime.Now.Hour &&
+				nextAlarm.Time.Minutes == DateTime.Now.Minute &&
+				nextAlarm.Time.Seconds == DateTime.Now.Second 
+				)
+			{
+				System.Threading.Thread.Sleep(1000); // задержка
+				axWindowsMediaPlayer1.Visible = true;
+				axWindowsMediaPlayer1.URL = nextAlarm.Filename;
+				axWindowsMediaPlayer1.settings.volume = 100;
+				axWindowsMediaPlayer1.Ctlcontrols.play();
+				if(nextAlarm.Message != "")
+				MessageBox.Show(this, nextAlarm.ToString(), "Alarm", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}
 
