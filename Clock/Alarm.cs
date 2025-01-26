@@ -9,7 +9,6 @@ namespace Clock
 {
 	internal class Alarm
 	{
-
 		public DateTime Date { get; set; }
 		public TimeSpan Time { get; set; }
 		public Week Week { get; set; }
@@ -45,6 +44,24 @@ namespace Clock
 			string selectedDateOfWeek = string.Join(", ", selectedDays);
 			//dateOfweek  = list.ToArray();
 			return $"{Date.ToString("yyyy-MM-dd")} {Time.ToString(@"hh\:mm")}, {selectedDateOfWeek} , {Filename}" ;
+		}
+		public string AlarmToString(Alarm alarm)
+		{
+			string[] dateOfweek = { "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс" };
+			List<string> selectedDays = new List<string>();
+
+			//List<string> list = dateOfweek.ToList();
+			for (int i = 0; i < dateOfweek.Length; i++)
+			//for (int i =dateOfweek.Length-1; i>=0;i--)
+			{
+				if ((Week.days & (1 << i)) != 0)
+				{
+					//list.RemoveAt(i);
+					selectedDays.Add(dateOfweek[i]);
+				}
+			}
+			string selectedDateOfWeek = string.Join(", ", selectedDays);
+			return $"{alarm.Date.ToString("yyyy-MM-dd")} {alarm.Time.ToString(@"hh\:mm")}, {selectedDateOfWeek} , {Filename}";
 		}
 	}
 }

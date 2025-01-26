@@ -17,7 +17,6 @@ namespace Clock
 	{
 		FontDialog fontDialog;
 		public AlarmsForm alarmForm;
-		
 		public mainForm()
 		{
 			InitializeComponent();
@@ -32,8 +31,7 @@ namespace Clock
 			if(fontDialog== null) fontDialog = new FontDialog();
 			alarmForm = new AlarmsForm();
         }
-		
-		 void SetVisibility(bool visible)
+		void SetVisibility(bool visible)
 		{
 			checkBoxShowDate.Visible = visible;
 			checkBoxShowWeekDay.Visible = visible;
@@ -42,7 +40,6 @@ namespace Clock
 			this.ShowInTaskbar = visible;
 			this.TransparencyKey = visible?Color.Empty:this.BackColor; // второй делает прозрачным
 		}
-
 		void LoadSettings()
 		{
 			StreamReader sr = null;
@@ -69,7 +66,6 @@ namespace Clock
 				MessageBox.Show(this, ex.ToString(), "In loadSetting()", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
-
 		void SaveSettings()
 		{
 			StreamWriter sw = 
@@ -104,59 +100,46 @@ namespace Clock
 			notifyIcon.Text = $"{DateTime.Now.ToString("hh:mm tt")}\n{DateTime.Now.ToString("yyyy.MM.dd")}\n{DateTime.Now.DayOfWeek}";//DateTime.Now.ToString("hh:mm tt"); //labelTime.Text;  // чтобы при наведении курсора  в system tray в подсказке  отображалось время
 
 		}
-
 		private void buttonHideControls_Click(object sender, EventArgs e)
 		{
 			//SetVisibility(false); 
 			toolStripMenuItemShowControls.Checked = false;
 		}
-
 		private void labelTime_DoubleClick(object sender, EventArgs e) 
 		{
 			//SetVisibility(true); 
 			toolStripMenuItemShowControls.Checked = true;
 		}
-
 		private void toolStripMenuItemTopmost_CheckedChanged(object sender, EventArgs e)=>   // => rocketchip
 			this.TopMost = toolStripMenuItemTopmost.Checked;
-
 		private void toolStripMenuItemShowControls_CheckedChanged(object sender, EventArgs e) => SetVisibility(toolStripMenuItemShowControls.Checked);
-
 		private void toolStripMenuItemShowDate_CheckedChanged(object sender, EventArgs e) =>
 			checkBoxShowDate.Checked = toolStripMenuItemShowDate.Checked;
-		
-
 		private void checkBoxShowDate_CheckedChanged(object sender, EventArgs e) =>
 			toolStripMenuItemShowDate.Checked = checkBoxShowDate.Checked;
-
 		private void checkBoxShowWeekDay_CheckedChanged(object sender, EventArgs e)
 		{
 			toolStripMenuItemShowWeekday.Checked = checkBoxShowWeekDay.Checked;
 		}
-
 		private void toolStripMenuItemShowWeekday_CheckedChanged(object sender, EventArgs e)
 		{
 			checkBoxShowWeekDay.Checked = toolStripMenuItemShowWeekday.Checked;
 		}
-
 		private void toolStripMenuItemExit_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
-
 		private void toolStripMenuItemBackgroundColor_Click(object sender, EventArgs e)
 		{
 			colorDialog.Color = labelTime.BackColor;
 			DialogResult result = colorDialog.ShowDialog(this);  // для того чтобы диалоговое окно было модальным по отношению к родительскому
 			if (result == DialogResult.OK) labelTime.BackColor = colorDialog.Color;
 		}
-
 		private void toolStripMenuItemForegroundColor_Click(object sender, EventArgs e)
 		{
 			colorDialog.Color = labelTime.ForeColor;
 			if (colorDialog.ShowDialog(this) == DialogResult.OK) labelTime.ForeColor = colorDialog.Color;
 		}
-
 		private void toolStripMenuItemChooseFont_Click(object sender, EventArgs e)
 		{
 			if(fontDialog.ShowDialog(this)==DialogResult.OK)
@@ -164,7 +147,6 @@ namespace Clock
 				labelTime.Font = fontDialog.Font;
 			}
 		}
-
 		// для отображения часов по двойному клику в трее
 		private void notifyIcon_DoubleClick(object sender, EventArgs e)
 		{
@@ -174,8 +156,6 @@ namespace Clock
 				this.TopMost = false;
 			}
 		}
-
-		//
 		private void toolStripMenuItemShowConsole_CheckedChanged(object sender, EventArgs e)
 		{
 			bool show = toolStripMenuItemShowConsole.Checked ? AllocConsole() : FreeConsole();
@@ -211,7 +191,6 @@ namespace Clock
 		{
 			SaveSettings();
 		}
-
 		private void toolStripMenuItemLoadOnWindowsStartup_CheckedChanged(object sender, EventArgs e)
 		{
 			string key_name = "Clock_VPD_311";
@@ -220,12 +199,9 @@ namespace Clock
 			else key.DeleteValue(key_name, false);  // false - обозначает throwOnMissingValue, если нет удаляемого значение  бросает исключение
 			key.Dispose();  // высвобождает ресурсы
 		}
-
 		private void toolStripMenuItemAlarms_Click(object sender, EventArgs e)
 		{
 			alarmForm.ShowDialog();
 		}
-
 	}
-
 }

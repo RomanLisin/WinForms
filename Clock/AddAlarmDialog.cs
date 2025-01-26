@@ -20,30 +20,23 @@ namespace Clock
 		string selectedSound;
 		bool isFirstShowAddAlarmDialog = true;
 		private AlarmsForm alarmsForm;
-
 		SoundPlayer soundPlayer;
+		List<Alarm> arrAlarms = new List<Alarm>();
+		string[] strArrAlarms = { };
+		public string LoadSource { get; set; }
 		public AddAlarmDialog(AlarmsForm parentForm)
 		{
 			InitializeComponent();
 			dateTimePickerDate.Enabled = false;
 			alarmsForm = parentForm;
 		}
-
-		
 		private void checkBoxUseDate_CheckedChanged(object sender, EventArgs e)
 		{
 			 dateTimePickerDate.Enabled = checkBoxUseDate.Checked;
 			checkedListBoxWeekdays.Enabled =!checkBoxUseDate.Checked;
 		}
-
 		private void buttonOk_Click(object sender, EventArgs e)
 		{
-			Alarm alarm = new Alarm(dateTimePickerDate, dateTimePickerTime, checkedListBoxWeekdays,
-				selectedSound);
-			if (alarmsForm != null)
-			{
-			 alarmsForm.UpdateListBoxAlarm(alarm.AlarmToString(this));
-			}
 
 			if (listBoxSound.SelectedIndex == -1)
 			{
@@ -64,14 +57,31 @@ namespace Clock
 			}
 			soundPlayer.SoundLocation = filePath;
 
-		}
+			Alarm alarm = new Alarm(dateTimePickerDate, dateTimePickerTime, checkedListBoxWeekdays,
+				selectedSound);
 
+			arrAlarms.Add(alarm);
+
+			if (alarmsForm != null)
+			{
+			 alarmsForm.UpdateListBoxAlarm(alarm.AlarmToString(this));
+			}
+		}
 		private void AddAlarmDialog_Load(object sender, EventArgs e)
 		{
+			
 			if (isFirstShowAddAlarmDialog)
 			{
-				UpdateData();
-				isFirstShowAddAlarmDialog = false;
+				if(this.LoadSource=="AddClick")
+				{UpdateData();
+					isFirstShowAddAlarmDialog = false;
+				}
+				else if (this.LoadSource == "DoubleSelectedClick")
+				{
+					int index = alarmsForm.selectedIndex;
+					//this.listBoxSound.SelectedIndex = 
+					//???????????
+				}
 			}
 		}
 		private void UpdateData()
@@ -97,7 +107,16 @@ namespace Clock
 				MessageBox.Show($"An error occurred: {ex.Message}");
 			}
 		}
+		public string[] arrAlarmToString(List<object> alarms)
+		{
+			string[] strAlarms = new string[alarms.Count];
+			for(int i=0;i<strAlarms.Length; i++)
+			{
+				if (alarms[i] is Alarm alarm)
+				{ strAlarms[i] = alarm.AlarmToString(alarm); }
+			}
+			return strAlarms ;
+		}
 
-	
 	}
 }

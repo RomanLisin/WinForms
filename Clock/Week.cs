@@ -10,7 +10,6 @@ namespace Clock
 	internal class Week
 	{
 		public byte days { get; set; }
-
 		public Week(CheckedListBox checkedListBox)
 		{
 			this.days = 0;
