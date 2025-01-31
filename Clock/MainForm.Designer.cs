@@ -55,9 +55,9 @@
 			this.buttonHideControls = new System.Windows.Forms.Button();
 			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.colorDialog = new System.Windows.Forms.ColorDialog();
-			this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+			this.axWindowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
 			this.contextMenuStrip.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// labelTime
@@ -259,22 +259,22 @@
 			this.notifyIcon.Visible = true;
 			this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
 			// 
-			// axWindowsMediaPlayer1
+			// axWindowsMediaPlayer
 			// 
-			this.axWindowsMediaPlayer1.Enabled = true;
-			this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(31, 348);
-			this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-			this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-			this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(277, 58);
-			this.axWindowsMediaPlayer1.TabIndex = 5;
-			this.axWindowsMediaPlayer1.Visible = false;
+			this.axWindowsMediaPlayer.Enabled = true;
+			this.axWindowsMediaPlayer.Location = new System.Drawing.Point(31, 348);
+			this.axWindowsMediaPlayer.Name = "axWindowsMediaPlayer";
+			this.axWindowsMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer.OcxState")));
+			this.axWindowsMediaPlayer.Size = new System.Drawing.Size(277, 58);
+			this.axWindowsMediaPlayer.TabIndex = 5;
+			this.axWindowsMediaPlayer.Visible = false;
 			// 
 			// mainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(320, 418);
-			this.Controls.Add(this.axWindowsMediaPlayer1);
+			this.Controls.Add(this.axWindowsMediaPlayer);
 			this.Controls.Add(this.buttonHideControls);
 			this.Controls.Add(this.checkBoxShowWeekDay);
 			this.Controls.Add(this.checkBoxShowDate);
@@ -286,7 +286,7 @@
 			this.Text = "Clock VPD_311";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
 			this.contextMenuStrip.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -319,7 +319,7 @@
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemShowConsole;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAlarms;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-		private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+		private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
 	}
 }
 

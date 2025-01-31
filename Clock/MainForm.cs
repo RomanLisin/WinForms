@@ -31,6 +31,7 @@ namespace Clock
 			LoadSettings();
 			alarmsForm = new AlarmsForm(this);
 			if(fontDialog== null) fontDialog = new FontDialog();
+			axWindowsMediaPlayer.Visible = false;
         }
 		
 		 void SetVisibility(bool visible)
@@ -122,10 +123,10 @@ namespace Clock
 				)
 			{
 				System.Threading.Thread.Sleep(1000); // задержка
-				axWindowsMediaPlayer1.Visible = true;
-				axWindowsMediaPlayer1.URL = nextAlarm.Filename;
-				axWindowsMediaPlayer1.settings.volume = 100;
-				axWindowsMediaPlayer1.Ctlcontrols.play();
+				axWindowsMediaPlayer.Visible = true;
+				axWindowsMediaPlayer.URL = nextAlarm.Filename;
+				axWindowsMediaPlayer.settings.volume = 100;
+				axWindowsMediaPlayer.Ctlcontrols.play();
 				if(nextAlarm.Message != "")
 				MessageBox.Show(this, nextAlarm.ToString(), "Alarm", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
