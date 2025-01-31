@@ -43,7 +43,7 @@
 			this.listBoxAlarms.FormattingEnabled = true;
 			this.listBoxAlarms.Location = new System.Drawing.Point(13, 13);
 			this.listBoxAlarms.Name = "listBoxAlarms";
-			this.listBoxAlarms.Size = new System.Drawing.Size(600, 342);
+			this.listBoxAlarms.Size = new System.Drawing.Size(438, 238);
 			this.listBoxAlarms.TabIndex = 0;
 			this.listBoxAlarms.SelectedIndexChanged += new System.EventHandler(this.listBoxAlarms_SelectedIndexChanged);
 			this.listBoxAlarms.DoubleClick += new System.EventHandler(this.listBoxAlarms_DoubleClick);
@@ -52,7 +52,7 @@
 			// 
 			this.labelAlarmInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.labelAlarmInfo.AutoSize = true;
-			this.labelAlarmInfo.Location = new System.Drawing.Point(13, 372);
+			this.labelAlarmInfo.Location = new System.Drawing.Point(13, 270);
 			this.labelAlarmInfo.Name = "labelAlarmInfo";
 			this.labelAlarmInfo.Size = new System.Drawing.Size(73, 13);
 			this.labelAlarmInfo.TabIndex = 1;
@@ -61,7 +61,7 @@
 			// buttonAdd
 			// 
 			this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonAdd.Location = new System.Drawing.Point(457, 406);
+			this.buttonAdd.Location = new System.Drawing.Point(295, 304);
 			this.buttonAdd.Name = "buttonAdd";
 			this.buttonAdd.Size = new System.Drawing.Size(75, 23);
 			this.buttonAdd.TabIndex = 2;
@@ -73,7 +73,7 @@
 			// 
 			this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttonCancel.Location = new System.Drawing.Point(538, 406);
+			this.buttonCancel.Location = new System.Drawing.Point(376, 304);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
 			this.buttonCancel.TabIndex = 3;
@@ -84,7 +84,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(625, 450);
+			this.ClientSize = new System.Drawing.Size(463, 348);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonAdd);
 			this.Controls.Add(this.labelAlarmInfo);

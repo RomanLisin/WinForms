@@ -16,7 +16,7 @@ namespace Clock
 	public partial class mainForm : Form
 	{
 		FontDialog fontDialog;
-		public AlarmsForm alarmForm;
+		public AlarmsForm alarmsForm;
 		Alarm nextAlarm;
 		public mainForm()
 		{
@@ -29,7 +29,7 @@ namespace Clock
 			//fontDialog = new FontDialog();
             Console.WriteLine(Directory.GetCurrentDirectory());
 			LoadSettings();
-			alarmForm = new AlarmsForm(this);
+			alarmsForm = new AlarmsForm(this);
 			if(fontDialog== null) fontDialog = new FontDialog();
         }
 		
@@ -87,7 +87,7 @@ namespace Clock
 		}
 		Alarm FindNextAlarm()
 		{
-			nextAlarm = alarmForm.Alarms.Items.Cast<Alarm>().ToArray().Min();
+			nextAlarm = alarmsForm.Alarms.Items.Cast<Alarm>().ToArray().Min();
 			return nextAlarm;
 		}
 		private void timer_Tick(object sender, EventArgs e)
@@ -249,7 +249,7 @@ namespace Clock
 
 		private void toolStripMenuItemAlarms_Click(object sender, EventArgs e)
 		{
-			alarmForm.ShowDialog();
+			alarmsForm.ShowDialog();
 		}
 
 	}

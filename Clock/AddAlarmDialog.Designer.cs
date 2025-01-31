@@ -36,8 +36,6 @@
 			this.buttonOk = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.checkedListBoxWeekdays = new System.Windows.Forms.CheckedListBox();
-			this.listBoxSound = new System.Windows.Forms.ListBox();
-			this.labelMessage = new System.Windows.Forms.Label();
 			this.richTextBoxMessage = new System.Windows.Forms.RichTextBox();
 			this.buttonChooseFile = new System.Windows.Forms.Button();
 			this.SuspendLayout();
@@ -79,18 +77,18 @@
 			// labelFilename
 			// 
 			this.labelFilename.AutoSize = true;
-			this.labelFilename.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.labelFilename.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.labelFilename.Location = new System.Drawing.Point(12, 228);
-			this.labelFilename.MaximumSize = new System.Drawing.Size(360, 0);
+			this.labelFilename.MaximumSize = new System.Drawing.Size(350, 0);
 			this.labelFilename.Name = "labelFilename";
-			this.labelFilename.Size = new System.Drawing.Size(75, 16);
+			this.labelFilename.Size = new System.Drawing.Size(62, 15);
 			this.labelFilename.TabIndex = 4;
 			this.labelFilename.Text = "Filename:";
 			// 
 			// buttonOk
 			// 
 			this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.buttonOk.Location = new System.Drawing.Point(195, 331);
+			this.buttonOk.Location = new System.Drawing.Point(195, 293);
 			this.buttonOk.Name = "buttonOk";
 			this.buttonOk.Size = new System.Drawing.Size(75, 23);
 			this.buttonOk.TabIndex = 5;
@@ -101,7 +99,7 @@
 			// buttonCancel
 			// 
 			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttonCancel.Location = new System.Drawing.Point(278, 331);
+			this.buttonCancel.Location = new System.Drawing.Point(278, 293);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
 			this.buttonCancel.TabIndex = 6;
@@ -127,24 +125,6 @@
 			this.checkedListBoxWeekdays.Size = new System.Drawing.Size(340, 19);
 			this.checkedListBoxWeekdays.TabIndex = 3;
 			// 
-			// listBoxSound
-			// 
-			this.listBoxSound.FormattingEnabled = true;
-			this.listBoxSound.Location = new System.Drawing.Point(116, 295);
-			this.listBoxSound.Name = "listBoxSound";
-			this.listBoxSound.Size = new System.Drawing.Size(237, 30);
-			this.listBoxSound.TabIndex = 7;
-			// 
-			// labelMessage
-			// 
-			this.labelMessage.AutoSize = true;
-			this.labelMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelMessage.Location = new System.Drawing.Point(9, 295);
-			this.labelMessage.Name = "labelMessage";
-			this.labelMessage.Size = new System.Drawing.Size(86, 20);
-			this.labelMessage.TabIndex = 8;
-			this.labelMessage.Text = "Message:";
-			// 
 			// richTextBoxMessage
 			// 
 			this.richTextBoxMessage.Location = new System.Drawing.Point(13, 149);
@@ -155,7 +135,7 @@
 			// 
 			// buttonChooseFile
 			// 
-			this.buttonChooseFile.Location = new System.Drawing.Point(114, 331);
+			this.buttonChooseFile.Location = new System.Drawing.Point(13, 293);
 			this.buttonChooseFile.Name = "buttonChooseFile";
 			this.buttonChooseFile.Size = new System.Drawing.Size(75, 23);
 			this.buttonChooseFile.TabIndex = 11;
@@ -167,11 +147,9 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(372, 366);
+			this.ClientSize = new System.Drawing.Size(372, 336);
 			this.Controls.Add(this.buttonChooseFile);
 			this.Controls.Add(this.richTextBoxMessage);
-			this.Controls.Add(this.labelMessage);
-			this.Controls.Add(this.listBoxSound);
 			this.Controls.Add(this.checkedListBoxWeekdays);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOk);
@@ -199,8 +177,6 @@
 		private System.Windows.Forms.Button buttonOk;
 		private System.Windows.Forms.Button buttonCancel;
 		private System.Windows.Forms.CheckedListBox checkedListBoxWeekdays;
-		private System.Windows.Forms.ListBox listBoxSound;
-		private System.Windows.Forms.Label labelMessage;
 		private System.Windows.Forms.RichTextBox richTextBoxMessage;
 		private System.Windows.Forms.Button buttonChooseFile;
 	}

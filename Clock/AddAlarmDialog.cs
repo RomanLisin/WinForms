@@ -19,11 +19,11 @@ namespace Clock
 		
 		public Alarm Alarm;
 		OpenFileDialog openFile;
-		string wavPath = "C:\\Users\\rls\\source\\repos\\WindowsDevelopment\\WinForms\\Clock\\Sound";
-		string selectedSound;
-		bool isFirstShowAddAlarmDialog = true;
+		//string wavPath = "C:\\Users\\rls\\source\\repos\\WindowsDevelopment\\WinForms\\Clock\\Sound";
+		//string selectedSound;
+		//bool isFirstShowAddAlarmDialog = true;
 
-		SoundPlayer soundPlayer;
+		//SoundPlayer soundPlayer;
 		public AddAlarmDialog()
 		{
 			InitializeComponent();
