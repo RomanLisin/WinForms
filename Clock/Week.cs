@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,15 @@ namespace Clock
 	public class Week
 	{
 		static readonly string[] DAY_NAMES = new string[] { "Пn", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс" };
-		byte days;
+
+		[JsonProperty]  // позволяет сериализовать приватное поле
+		private byte days;
+
+		public byte Days
+		{
+			get => days;
+			set => days = value;
+		}
 		public Week()
 		{
 			days = 0;
@@ -53,7 +62,7 @@ namespace Clock
 			{
 				if ((days & (byte)(1 << i)) != 0) dayNames += $"{ DAY_NAMES[i]}, ";
 			}
-			return dayNames;
+			return dayNames.TrimEnd(',',' ');
 		}
 
 	}
