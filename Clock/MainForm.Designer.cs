@@ -268,6 +268,7 @@
 			this.axWindowsMediaPlayer.Size = new System.Drawing.Size(277, 58);
 			this.axWindowsMediaPlayer.TabIndex = 5;
 			this.axWindowsMediaPlayer.Visible = false;
+			this.axWindowsMediaPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.axWindowsMediaPlayer_PlayStateChange);
 			// 
 			// mainForm
 			// 

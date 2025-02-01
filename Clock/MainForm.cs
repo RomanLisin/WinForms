@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;  // DllImport
 using System.IO;                       // Directory
 using Microsoft.Win32;
 using Newtonsoft.Json;
+using WMPLib;
 
 
 namespace Clock
@@ -116,6 +117,8 @@ namespace Clock
 			{
 				Console.WriteLine(nextAlarm);
 			}
+
+
 
 			if (
 				nextAlarm != null &&
@@ -256,9 +259,13 @@ namespace Clock
 			alarmsForm.ShowDialog();
 		}
 
-
-		
-
+		private void axWindowsMediaPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+		{
+			if(e.newState == 1 || e.newState == 8)
+			{
+				axWindowsMediaPlayer.Visible = false;
+			}
+		}
 	}
 
 }
