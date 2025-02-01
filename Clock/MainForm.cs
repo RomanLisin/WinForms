@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;  // DllImport
 using System.IO;                       // Directory
 using Microsoft.Win32;
+using Newtonsoft.Json;
+
 
 namespace Clock
 {
@@ -237,6 +239,7 @@ namespace Clock
 		private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			SaveSettings();
+			alarmsForm.SaveAlarms();
 		}
 
 		private void toolStripMenuItemLoadOnWindowsStartup_CheckedChanged(object sender, EventArgs e)
@@ -252,6 +255,9 @@ namespace Clock
 		{
 			alarmsForm.ShowDialog();
 		}
+
+
+		
 
 	}
 

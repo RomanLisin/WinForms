@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,10 +15,16 @@ namespace Clock
 	public partial class AlarmsForm : Form
 	{
 		AddAlarmDialog dialog;
-		public ListBox Alarms { get => listBoxAlarms; }
+		public ListBox Alarms
+		{
+			get => listBoxAlarms;
+			set => listBoxAlarms = value;
+		}
+
 		public AlarmsForm()
 		{
 			InitializeComponent();
+			LoadAlarms();
 			dialog = new AddAlarmDialog();
 		}
 
@@ -59,6 +67,52 @@ namespace Clock
 		{
 			if(listBoxAlarms.SelectedItem != null)
 			labelAlarmInfo.Text = listBoxAlarms.SelectedItem.ToString();
+		}
+		public void SaveAlarms()
+		{
+			try
+			{
+				List<Alarm> alarms = listBoxAlarms.Items.Cast<Alarm>().ToList();
+				string json = JsonConvert.SerializeObject(alarms, Formatting.Indented);
+				string filePathJson = Path.Combine(Application.StartupPath, "Alarms.json");
+				
+				File.WriteAllText(filePathJson, json);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Error saving alarms: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		private void LoadAlarms()
+		{
+			try
+			{
+				string filePath = Path.Combine(Application.StartupPath, "Alarms.json");
+
+				if (File.Exists(filePath))
+				{
+					string json = File.ReadAllText(filePath);
+					List<Alarm> loadedAlarms = JsonConvert.DeserializeObject<List<Alarm>>(json);
+
+
+					if (loadedAlarms != null)
+					{
+						
+							listBoxAlarms.Items.Clear();
+
+							foreach (Alarm alarm in loadedAlarms)
+							{
+								Alarms.Items.Add(alarm);
+							}
+						
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Error loading alarms: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 	}
 }
