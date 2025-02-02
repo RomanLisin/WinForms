@@ -47,7 +47,6 @@ namespace Clock
 		{
 			 dateTimePickerDate.Enabled = checkBoxUseDate.Checked;
 			checkedListBoxWeekdays.Enabled =!checkBoxUseDate.Checked;
-			
 		}
 
 		private void buttonOk_Click(object sender, EventArgs e)

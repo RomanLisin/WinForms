@@ -15,6 +15,7 @@ namespace Clock
 	public partial class AlarmsForm : Form
 	{
 		AddAlarmDialog dialog;
+		
 		public ListBox Alarms
 		{
 			get => listBoxAlarms;

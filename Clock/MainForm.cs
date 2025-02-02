@@ -117,26 +117,44 @@ namespace Clock
 			{
 				Console.WriteLine(nextAlarm);
 			}
+			int dayIndex = ((int)DateTime.Now.DayOfWeek + 6) % 7;
 
-
-
-			if (
-				nextAlarm != null &&
-				nextAlarm.Time.Hours == DateTime.Now.Hour &&
-				nextAlarm.Time.Minutes == DateTime.Now.Minute &&
-				nextAlarm.Time.Seconds == DateTime.Now.Second 
-				)
+			//MessageBox.Show($"dayIndex{dayIndex}");
+			if (nextAlarm.Date != DateTime.MinValue) // если checkBoxUseDate выбран
 			{
-				System.Threading.Thread.Sleep(1000); // задержка
-				axWindowsMediaPlayer.Visible = true;
-				axWindowsMediaPlayer.URL = nextAlarm.Filename;
-				axWindowsMediaPlayer.settings.volume = 100;
-				axWindowsMediaPlayer.Ctlcontrols.play();
-				if(nextAlarm.Message != "")
-				MessageBox.Show(this, nextAlarm.ToString(), "Alarm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				if (nextAlarm.Date.Day == DateTime.Today.Day)
+				{
+					CheckedTime();
+				}
 			}
+			else   // checkBoxUseDate не выбран
+			{
+				if ((nextAlarm.Week.Days & (1 << dayIndex)) != 0)
+				{
+					CheckedTime(); 
+				}
+			}
+			//CheckedTime();
 		}
 
+		private void CheckedTime()
+		{
+				if (
+						nextAlarm != null &&
+						nextAlarm.Time.Hours == DateTime.Now.Hour &&
+						nextAlarm.Time.Minutes == DateTime.Now.Minute &&
+						nextAlarm.Time.Seconds == DateTime.Now.Second
+						)
+				{
+					System.Threading.Thread.Sleep(1000); // задержка
+					axWindowsMediaPlayer.Visible = true;
+					axWindowsMediaPlayer.URL = nextAlarm.Filename;
+					axWindowsMediaPlayer.settings.volume = 100;
+					axWindowsMediaPlayer.Ctlcontrols.play();
+					if (nextAlarm.Message != "")
+						MessageBox.Show(this, nextAlarm.ToString(), "Alarm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				} 
+		}
 		private void buttonHideControls_Click(object sender, EventArgs e)
 		{
 			//SetVisibility(false); 

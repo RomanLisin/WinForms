@@ -15,6 +15,7 @@ namespace Clock
 		public Week Week { get; set; }
 		public string Filename { get; set; }	
 		public string Message { get; set; }
+		public bool checkUseDate { get; set; }
 		public Alarm() 
 		{
 			this.Week = new Week();
@@ -26,6 +27,7 @@ namespace Clock
 			this.Week = new Week(other.Week);
 			this.Filename = other.Filename;
 			this.Message = other.Message;
+			this.checkUseDate = other.checkUseDate;
 		}
 		public static bool operator > (Alarm left, Alarm right)
 		{
@@ -41,7 +43,7 @@ namespace Clock
 		public override string ToString()
 		{
 			string info = "";
-			info += $"{(DateTime.Today + this.Time).ToString("hh:mm:ss tt")}\t{this.Week}\t{this.Filename.Split('\\').Last()}";
+			info += $"{(DateTime.Today + this.Time).ToString("hh:mm:ss tt")}\t{this.Week}\t{this.Filename.Split('\\').Last()}\t";
 			if (this.Date != DateTime.MinValue) info += this.Date.ToString("yyyy.MM.dd");
 			//info += this.Time;
 			//info += this.Week;
