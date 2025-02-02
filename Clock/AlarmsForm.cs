@@ -80,8 +80,8 @@ namespace Clock
 			{
 				List<Alarm> alarms = listBoxAlarms.Items.Cast<Alarm>().ToList();
 				string json = JsonConvert.SerializeObject(alarms, Formatting.Indented);
-				string filePathJson = Path.Combine(Application.StartupPath, "Alarms.json");
-				
+				string filePathJson = $"{Path.GetDirectoryName(Application.ExecutablePath)}\\..\\..\\Alarms.json";//Path.Combine(Application.StartupPath, "\\..\\..\\Alarms.json");   // сохраняет в bin\debug\   в Clock нужно переделать на \\..\\..\\Alarms.json  но потом проверить
+
 				File.WriteAllText(filePathJson, json);
 			}
 			catch (Exception ex)
@@ -94,7 +94,7 @@ namespace Clock
 		{
 			try
 			{
-				string filePath = Path.Combine(Application.StartupPath, "Alarms.json");
+				string filePath = $"{Path.GetDirectoryName(Application.ExecutablePath)}\\..\\..\\Alarms.json";//Path.Combine(Application.StartupPath, "\\..\\..\\Alarms.json"); // сохраняет в bin\debug\   в Clock нужно переделать на \\..\\..\\Alarms.json  но потом проверить
 
 				if (File.Exists(filePath))
 				{
