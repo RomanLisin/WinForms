@@ -49,6 +49,11 @@ namespace Clock
 				listBoxAlarms.Items.Add(new Alarm(dialog.Alarm));
 			}
 		}
+		private void buttonDelete_Click(object sender, EventArgs e)
+		{
+			//int index = listBoxAlarms.SelectedIndex;
+			listBoxAlarms.Items.Remove(listBoxAlarms.SelectedItem);
+		}
 		public void UpdateListBoxAlarm(string text)
 		{
 			listBoxAlarms.Items.Add(text);
@@ -115,5 +120,6 @@ namespace Clock
 				MessageBox.Show($"Error loading alarms: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+
 	}
 }
